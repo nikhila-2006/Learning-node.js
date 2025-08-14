@@ -14,3 +14,7 @@ app.get("/rolldice",(req,res)=>{
     let diceVal=Math.floor(Math.random()*6)+1;
     res.render("home.ejs",{diceVal});
 })
+app.get("/ig/:username",(req,res)=>{
+    let {username}=req.params;
+    res.render("instagram",{username});
+})
