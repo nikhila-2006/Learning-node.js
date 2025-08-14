@@ -12,10 +12,20 @@ app.listen(port,()=>{
 })
 app.get("/rolldice",(req,res)=>{
     let diceVal=Math.floor(Math.random()*6)+1;
-    res.render("home.ejs",{diceVal});
+    res.render("diceroll.ejs",{diceVal});
 })
 app.get("/ig/:username",(req,res)=>{
-    let followers=["akshitha_challa","sumanth_05","nikhila__01","sunandha_06","shradhakhapra"]
+    let instaData=require("./data.json");
+    
     let {username}=req.params;
-    res.render("instagram",{username,followers});
+    let data=instaData[username];
+    if(data){
+        res.render("instagram",{data});
+    }else{
+        res.render("error");
+    }
+    
+})
+app.get(/.*/ ,(req,res)=>{
+    res.render("home");
 })
