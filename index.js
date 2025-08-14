@@ -15,6 +15,7 @@ app.get("/rolldice",(req,res)=>{
     res.render("home.ejs",{diceVal});
 })
 app.get("/ig/:username",(req,res)=>{
+    let followers=["akshitha_challa","sumanth_05","nikhila__01","sunandha_06","shradhakhapra"]
     let {username}=req.params;
-    res.render("instagram",{username});
+    res.render("instagram",{username,followers});
 })
