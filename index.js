@@ -1,0 +1,24 @@
+const express=require("express");
+const app=express();
+const port=8080;
+const path=require("path");
+let posts=[{
+    username:"NikhilaReddy",
+    content:"I am selected for my 1st internship at microsoft"
+},{
+    username:"Shradhakhapra",
+    content:"Smile looks good on you!"
+},{
+    username:"Apnacollge",
+    content:"coding is fun!"
+}];
+app.use(express.urlencoded({expected:true}));
+app.set("view engine","ejs");
+app.set("views",path.join(__dirname,"views"));
+app.use(express.static(path.join(__dirname, "public")));
+app.get("/posts",(req,res)=>{
+    res.render("index.ejs",{posts});
+})
+app.listen(port,()=>{
+    console.log("listening to the port 8080");
+})
